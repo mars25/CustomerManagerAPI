@@ -1,0 +1,158 @@
+PASO 1 — Crear la solución en .NET
+
+En tu máquina, abre una terminal dentro de la carpeta donde trabajarás y ejecuta:
+
+1) Crear solución
+dotnet new sln -n CustomerManagerAPI
+
+2) Crear proyecto Web API
+dotnet new webapi -n CustomerManagerAPI.Api
+
+3) Agregar proyecto a la solución
+dotnet sln add CustomerManagerAPI.Api
+
+
+Esto crea la API y la conecta con la solución.
+
+✅ PASO 2 — Crea la estructura de carpetas dentro del proyecto
+
+Dentro de CustomerManagerAPI.Api, crea carpetas así:
+
+/Controllers
+/DTOs
+/Entities
+/Services
+/Repositories
+/Mapping
+/Configurations
+
+
+Esto muestra a clientes buena arquitectura.
+
+✅ PASO 3 — Crea modelo inicial (Customer Entity)
+
+Crea el archivo:
+Entities/Customer.cs
+
+public class Customer
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+✅ PASO 4 — Crear DTOs básicos
+
+Crea:
+
+DTO para leer
+
+DTOs/CustomerDto.cs
+
+public class CustomerDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+}
+
+DTO para crear
+
+DTOs/CreateCustomerDto.cs
+
+public class CreateCustomerDto
+{
+    public string Name { get; set; }
+    public string Email { get; set; }
+}
+
+DTO para actualizar
+
+DTOs/UpdateCustomerDto.cs
+
+public class UpdateCustomerDto
+{
+    public string Name { get; set; }
+    public string Email { get; set; }
+}
+
+✅ PASO 5 — Instalar Entity Framework Core + SQL Server
+
+En terminal, dentro del proyecto API:
+
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package AutoMapper
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
+
+✅ PASO 6 — Crear el DbContext
+
+Crea el archivo:
+
+Configurations/AppDbContext.cs
+
+using Microsoft.EntityFrameworkCore;
+using CustomerManagerAPI.Api.Entities;
+
+public class AppDbContext : DbContext
+{
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options)
+    {
+    }
+
+    public DbSet<Customer> Customers { get; set; }
+}
+
+✅ PASO 7 — Registrar el DbContext en Program.cs
+
+En Program.cs, agrega:
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+Y en appsettings.json agrega:
+
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=CustomerManager;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+
+🟦 👉 Tu misión de hoy
+
+Muy simple y muy poderosa:
+
+🎯 TAREA 1 — Crear la estructura de carpetas
+🎯 TAREA 2 — Crear entidades y DTOs
+🎯 TAREA 3 — Instalar EF Core y crear AppDbContext
+🎯 TAREA 4 — Primer commit con todo esto
+
+Commit message sugerido:
+
+Initial project structure: entities, DTOs, DbContext, project setup
+
+
+Cuando termines estos pasos, te guío con:
+
+Repositories
+
+Services
+
+AutoMapper
+
+Controller
+
+Endpoints CRUD funcionales
+
+Migraciones de EF Core
+
+Swagger
+
+Versionado de API
+
+Y así vas avanzando día por día en tu portafolio profesional.
+
+Solo respóndeme:
+➡️ ¿Listo para avanzar con los Repositories y Services cuando completes esto?
