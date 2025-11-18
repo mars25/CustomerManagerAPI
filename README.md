@@ -6,6 +6,7 @@
 3. Manejo de base de datos
 4. Documentación profesional
 5. Despliegue básico
+   
 **Tecnologías**
 C# (.NET 8 / .NET 7)
 ASP.NET Core Web API
@@ -13,6 +14,7 @@ SQL Server
 Entity Framework Core
 AutoMapper
 Swagger / OpenAPI
+
 **TO-DO**
 1. Módulo de Clientes
     Crear cliente
