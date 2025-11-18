@@ -81,8 +81,8 @@ public class UpdateCustomerDto
 
 En terminal, dentro del proyecto API:
 
-dotnet add package Microsoft.EntityFrameworkCore
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore 6.0.0
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer 6.0.0
 dotnet add package Microsoft.EntityFrameworkCore.Tools
 dotnet add package AutoMapper
 dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
@@ -119,20 +119,6 @@ Y en appsettings.json agrega:
 "ConnectionStrings": {
   "DefaultConnection": "Server=localhost;Database=CustomerManager;Trusted_Connection=True;TrustServerCertificate=True;"
 }
-
-🟦 👉 Tu misión de hoy
-
-Muy simple y muy poderosa:
-
-🎯 TAREA 1 — Crear la estructura de carpetas
-🎯 TAREA 2 — Crear entidades y DTOs
-🎯 TAREA 3 — Instalar EF Core y crear AppDbContext
-🎯 TAREA 4 — Primer commit con todo esto
-
-Commit message sugerido:
-
-Initial project structure: entities, DTOs, DbContext, project setup
-
 
 Cuando termines estos pasos, te guío con:
 
